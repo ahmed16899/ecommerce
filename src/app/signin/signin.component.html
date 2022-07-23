@@ -1,0 +1,20 @@
+<form (ngSubmit)="submitForm(registerForm)" [formGroup]="registerForm" class="w-50 mx-auto">
+    <label class="mt-2">Email</label>
+    <input formControlName="email" class="form-control" type="text">
+    <div *ngIf="registerForm.get('email')?.errors != null  && registerForm.get('email')?.touched"
+        class="alert alert-danger mt-2">
+        <p *ngIf="registerForm.get('email')?.errors?.['required']" class="m-0">Email is required</p>
+        <p *ngIf="registerForm.get('email')?.errors?.['pattern']" class="m-0">Enter Email Form</p>
+    </div>
+
+    <label class="mt-2">Password</label>
+    <input formControlName="password" class="form-control" type="text">
+    <div *ngIf="registerForm.get('password')?.errors != null  && registerForm.get('password')?.touched"
+        class="alert alert-danger mt-2">
+        <p *ngIf="registerForm.get('password')?.errors?.['required']" class="m-0">Password is required</p>
+    </div>
+    <button class="btn btn-success mt-3" [disabled]="registerForm.invalid">Sign in</button>
+    <div *ngIf="eror" class="alert alert-danger mt-2">
+        <p class="m-0 p-0">{{eror}}</p>
+    </div>
+</form>

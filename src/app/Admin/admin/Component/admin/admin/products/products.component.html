@@ -1,0 +1,95 @@
+<div class="container pt-4">
+  <input type="text" class="form-control w-50 mx-auto"  [(ngModel)]="searcItem"  placeholder="search">
+    <div class="row mt-5">
+        <div *ngFor="let product of products | search:searcItem" class="col-md-4">
+            <div class="card text-dark bg-light mb-3 text-center">
+                <div class="card-header">{{product.name}}</div>
+                <img style="height: 200px;" class="w-50 mx-auto pt-4" [src]="product.photoURL">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.price |currency}}</h5>
+                    <!-- <p class="card-text">{{product.description}}</p> -->
+                </div>
+                <div class="d-flex justify-content-between w-50 mx-auto pb-3">
+                    <button (click)="openModal(product)" data-bs-toggle="modal" data-bs-target="#updateModel" class="btn btn-primary">Update</button>
+                    <button (click)="deleteProduct(product)" class="btn btn-danger">Delete</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="updateModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="updateForm" class="w-50 mx-auto">
+                <label class="mt-2">Product</label>
+                <input formControlName="product" class="form-control" type="text">
+                <div *ngIf="updateForm.get('product')?.errors != null  && updateForm.get('product')?.touched"
+                    class="alert alert-danger mt-2">
+                    <p *ngIf="updateForm.get('product')?.errors?.['required']" class="m-0">Product is required</p>
+                </div>
+            
+                <label class="mt-2">Price</label>
+                <input formControlName="price" class="form-control" type="text">
+                <div *ngIf="updateForm.get('price')?.errors != null  && updateForm.get('price')?.touched"
+                    class="alert alert-danger mt-2">
+                    <p *ngIf="updateForm.get('price')?.errors?.['required']" class="m-0">Price is required</p>
+                </div>
+            
+                <label class="mt-2">Description</label>
+                <input formControlName="description" class="form-control" type="text">
+                <div *ngIf="updateForm.get('description')?.errors != null  && updateForm.get('description')?.touched"
+                    class="alert alert-danger mt-2">
+                    <p *ngIf="updateForm.get('description')?.errors?.['required']" class="m-0">description is required</p>
+                </div>
+                
+            
+                <select  formControlName="category" class="form-select mt-4" aria-label="Default select example">
+                    <option selected disabled hidden>Category</option>
+                    <option value="Mobiles ">Mobiles</option>
+                    <option value="Books">Books</option>
+                    <option value="Food ">Food</option>
+                    <option value="Laptop ">Laptop</option>
+                  </select>
+                  <div *ngIf="updateForm.get('category')?.errors != null  && updateForm.get('category')?.touched"
+                  class="alert alert-danger mt-2">
+                  <p *ngIf="updateForm.get('category')?.errors?.['required']" class="m-0">Category is required</p>
+              </div>
+            
+            
+                <label class="mt-2">Discount</label>
+                <input formControlName="discount" class="form-control" type="text">
+                <div *ngIf="updateForm.get('discount')?.errors != null  && updateForm.get('discount')?.touched"
+                    class="alert alert-danger mt-2">
+                    <p *ngIf="updateForm.get('discount')?.errors?.['required']" class="m-0">Discount is required</p>
+                </div>
+                <!-- <div class="mb-3">
+                    <label  for="formFile" class="form-label">Image</label>
+                    <input formControlName="file" #image class="form-control" type="file" id="formFile">
+                  </div> -->
+                <!-- <button class="btn btn-success mt-3" [disabled]="updateForm.invalid">Add</button> -->
+                <!-- <div *ngIf="addDone" class="alert alert-success mt-2">
+                    <p class="m-0 p-0">Product Added Successfully</p>
+                </div>  -->
+            </form>        </div>
+            
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="updateProduct(updateForm)" [disabled]="updateForm.invalid" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

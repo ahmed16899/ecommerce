@@ -1,0 +1,75 @@
+<div class="container pt-4">
+    <div class="row">
+        <div *ngFor="let product of products" class="col-md-4">
+            <div class="card text-dark bg-light mb-3 text-center">
+                <div class="card-header">{{product.name}}</div>
+                <img style="height: 200px;" class="w-50 mx-auto pt-4" [src]="product.photoURL">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.price | currency}}</h5>
+                    <!-- <p class="card-text">{{product.description}}</p> -->
+                </div>
+                <div class="mb-4">
+                    <button  (click)="addToCart(product)" class="btn btn-success ">Add to Cart</button>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" >
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class=" modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Add</th>
+                    <th scope="col">Reduce</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Total</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let car of cart ; let i = index ">
+                    <td class="pt-3">{{car.name}}</td>
+                    <td class="pt-3"> {{car.quantity}} </td>
+                    <td class="pt-3">{{car.price | currency}}</td>
+                    <td>
+                        <button (click)="addOne(car)" class="btn btn-primary">Add One</button>
+                    </td>
+                    <td>  
+                     <button (click)=" deleteOne(car , i)" class="btn btn-secondary">Delete One</button></td>
+                    <td>
+                      <button (click)="deleteAll(i)" class="btn btn-danger">Delete All</button>
+                    </td>
+                    <td class="pt-3">{{car.totalPrice | currency}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+        </div>
+        <h2 class="text-center">Total = {{total | currency}}</h2>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="confirmBuying()" type="button" class="btn btn-success">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>

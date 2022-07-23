@@ -1,0 +1,48 @@
+<form (ngSubmit)="submitForm(registerForm)" [formGroup]="registerForm" class="w-50 mx-auto">
+    <!-- <label class="mt-2">First Name</label>
+    <input formControlName="first_name" class="form-control" type="text">
+    <div *ngIf="registerForm.get('first_name')?.errors != null && registerForm.get('first_name')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('first_name')?.errors?.['required']" class="m-0">First Name is required</p>
+    </div>
+    
+    <label class="mt-2">Last Name</label>
+    <input formControlName="last_name" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('last_name')?.errors != null  && registerForm.get('last_name')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('last_name')?.errors?.['required']" class="m-0">Last Name is required</p>
+    </div> -->
+    <label class="mt-2">Email</label>
+    <input formControlName="email" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('email')?.errors != null  && registerForm.get('email')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('email')?.errors?.['required']" class="m-0">Email is required</p>
+        <p  *ngIf="registerForm.get('email')?.errors?.['pattern']" class="m-0">Enter Email Form</p>
+    </div>
+    
+    <label class="mt-2">Password</label>
+    <input formControlName="password" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('password')?.errors != null  && registerForm.get('password')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('password')?.errors?.['required']" class="m-0">Password is required</p>
+    </div>
+
+    <label class="mt-2">Address</label>
+    <input formControlName="address" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('address')?.errors != null  && registerForm.get('address')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('address')?.errors?.['required']" class="m-0">Address is required</p>
+    </div>
+
+    <label class="mt-2">Phone</label>
+    <input formControlName="phone" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('phone')?.errors != null  && registerForm.get('phone')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('phone')?.errors?.['required']" class="m-0">Phone is required</p>
+    </div>
+    
+    <!-- <label class="mt-2">Age</label>
+    <input formControlName="age" class="form-control" type="text">
+    <div  *ngIf="registerForm.get('age')?.errors != null && registerForm.get('age')?.touched" class="alert alert-danger mt-2">
+        <p  *ngIf="registerForm.get('age')?.errors?.['required']" class="m-0">Age is required</p>
+        <p  *ngIf="registerForm.get('age')?.errors?.['pattern']" class="m-0">Enter Number Only</p>
+    </div> -->
+    <button class="btn btn-success mt-3" [disabled]="registerForm.invalid">Register</button>
+     <div  *ngIf="eror" class="alert alert-danger mt-2">
+        <p class="m-0 p-0">{{eror}}</p>
+    </div> 
+    </form>

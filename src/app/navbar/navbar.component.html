@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg bg-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand" >ECommerce</a>
+     
+      <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <!-- <li *ngIf="isLogIn" class="nav-item">
+              <a class="nav-link " aria-current="page" routerLink="home">Home</a>
+            </li> -->
+            <!-- <li *ngIf="isLogIn" class="nav-item">
+              <a class="nav-link " aria-current="page" routerLink="toprated">Top rated</a>
+            </li> -->
+            <!-- <li *ngIf="isLogIn" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Top Rated
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
+                <!-- <li><a   class="dropdown-item" [routerLink]="['/toprated','movie']" >Movies</a></li>
+                <li><a   class="dropdown-item" [routerLink]="['/toprated','tv']">TVs</a></li> -->
+      
+              <!-- </ul>
+            </li> -->
+            <!-- <li  *ngIf="isLogIn" class="nav-item">
+              <a class="nav-link" routerLink="favorites">Favorites</a>
+            </li> -->
+            <li  *ngIf="!isLogIn" class="nav-item">
+              <a class="nav-link" routerLink="signin">Sign in</a>
+            </li>
+            <li  *ngIf="!isLogIn" class="nav-item">
+              <a class="nav-link" routerLink="signup">Register</a>
+            </li>
+            <li  *ngIf="isLogIn && type=='user'" class="nav-item">
+                <a class="nav-link" routerLink="user/home">All Products</a>
+              </li>
+              <li  *ngIf="isLogIn && type=='user'" class="nav-item">
+              
+                <a class="nav-link" routerLink="user/home" data-bs-toggle="modal" data-bs-target="#exampleModal">Cart</a>
+              </li>
+              <span class="bg-danger text-white Not" *ngIf="cartLength!=0 && isLogIn && type=='user'"> {{cartLength}}</span>
+              <li  *ngIf="isLogIn && type=='admin'" class="nav-item">
+                <a class="nav-link" routerLink="admin/add">Add Product</a>
+              </li>
+              <li  *ngIf="isLogIn && type=='admin'" class="nav-item">
+                <a class="nav-link" routerLink="admin/products">Products</a>
+              </li>
+              <li  *ngIf="isLogIn && type=='admin'" class="nav-item">
+                <a class="nav-link" routerLink="admin/requests">Requests</a>
+              </li>
+            <li (click)="signOut()" *ngIf="isLogIn" class="nav-item ">
+              <a class="nav-link" >Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+  </nav>
